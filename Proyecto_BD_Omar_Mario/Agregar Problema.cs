@@ -16,5 +16,21 @@ namespace Proyecto_BD_Omar_Mario
         {
             InitializeComponent();
         }
+
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            Problema p = new Problema();
+            p.id = Convert.ToInt32(txtID.Text.ToString());
+            p.nombre = txtNombre.Text.ToString();
+            p.idcat = getCategory();
+            p.dificultad = cboDificultad.Text.ToString();
+            p.bd = txtBD.Text.ToString();
+        }
+        public int getCategory()
+        {
+            C_consultas consulta = new C_consultas();
+            return consulta.
+            return -1;
+        }
     }
 }
