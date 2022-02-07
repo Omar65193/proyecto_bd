@@ -9,10 +9,12 @@ namespace Proyecto_BD_Omar_Mario
 {
    class Conexion
     {
-         String conexionstring;        
-       public MySqlConnection conexion { get; }
-       
-       public Conexion(String servidor,string puerto)
+        public String conexionstring { set; get; }
+        public MySqlConnection conexion { get; }
+        public static String servidor { get; set; }
+        public static String puerto { get; set; }
+
+       public Conexion()
         {           
              conexionstring = "server=" + servidor + "; port="+puerto+"; database=SERVERBD; Uid=omar; pwd=password;";
              conexion = new MySqlConnection(conexionstring);            

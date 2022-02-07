@@ -16,7 +16,7 @@ namespace Proyecto_BD_Omar_Mario
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new W_login());
+            Application.Run(new W_seleccionar_servidor());
         }
     }
 }

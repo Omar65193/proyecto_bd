@@ -34,6 +34,7 @@ namespace Proyecto_BD_Omar_Mario
             this.txt_user = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
@@ -79,11 +80,21 @@ namespace Proyecto_BD_Omar_Mario
             this.label2.TabIndex = 4;
             this.label2.Text = "Contraseña";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(59, 33);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(221, 13);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "USUARIO: prueba       Contraseña: password";
+            // 
             // W_login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(338, 296);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txt_user);
@@ -103,5 +114,6 @@ namespace Proyecto_BD_Omar_Mario
         private System.Windows.Forms.TextBox txt_user;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }

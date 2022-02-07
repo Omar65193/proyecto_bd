@@ -72,6 +72,12 @@
     <Compile Include="W_login.Designer.cs">
       <DependentUpon>W_login.cs</DependentUpon>
     </Compile>
+    <Compile Include="W_seleccionar_servidor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="W_seleccionar_servidor.Designer.cs">
+      <DependentUpon>W_seleccionar_servidor.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Agregar Problema.resx">
       <DependentUpon>Agregar Problema.cs</DependentUpon>
     </EmbeddedResource>
@@ -86,6 +92,9 @@
     </Compile>
     <EmbeddedResource Include="W_login.resx">
       <DependentUpon>W_login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="W_seleccionar_servidor.resx">
+      <DependentUpon>W_seleccionar_servidor.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

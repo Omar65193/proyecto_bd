@@ -29,7 +29,7 @@ namespace Proyecto_BD_Omar_Mario
         public int getCategory()
         {
             C_consultas consulta = new C_consultas();
-            return consulta.
+            //return consulta.
             return -1;
         }
     }

@@ -23,7 +23,7 @@ namespace Proyecto_BD_Omar_Mario
             user.usuario = txt_user.Text;
             user.contrasenia = txt_password.Text.ToString();
             C_consultas c_Consultas = new C_consultas();
-            c_Consultas.iniciar_sesion("6.tcp.ngrok.io","13474", user);
+            c_Consultas.iniciar_sesion(user);
 
         }
     }

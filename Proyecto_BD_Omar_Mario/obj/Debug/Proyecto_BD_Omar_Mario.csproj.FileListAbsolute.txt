@@ -22,3 +22,5 @@ C:\Users\Smitty\proyecto_bd\Proyecto_BD_Omar_Mario\obj\Debug\Proyecto_BD_Omar_Ma
 C:\Users\Smitty\proyecto_bd\Proyecto_BD_Omar_Mario\obj\Debug\Proyecto_BD_Omar_Mario.csproj.CopyComplete
 C:\Users\Smitty\proyecto_bd\Proyecto_BD_Omar_Mario\obj\Debug\Proyecto_BD_Omar_Mario.exe
 C:\Users\Smitty\proyecto_bd\Proyecto_BD_Omar_Mario\obj\Debug\Proyecto_BD_Omar_Mario.pdb
+C:\Users\Smitty\proyecto_bd\Proyecto_BD_Omar_Mario\obj\Debug\Proyecto_BD_Omar_Mario.Agregar_Problema.resources
+C:\Users\Smitty\proyecto_bd\Proyecto_BD_Omar_Mario\obj\Debug\Proyecto_BD_Omar_Mario.W_seleccionar_servidor.resources
