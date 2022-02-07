@@ -47,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Agregar Problema.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Agregar Problema.Designer.cs">
+      <DependentUpon>Agregar Problema.cs</DependentUpon>
+    </Compile>
     <Compile Include="Conexion.cs" />
     <Compile Include="C_consultas.cs" />
     <Compile Include="C_usuarios.cs" />
