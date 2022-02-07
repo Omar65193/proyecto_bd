@@ -53,6 +53,7 @@
     <Compile Include="Agregar Problema.Designer.cs">
       <DependentUpon>Agregar Problema.cs</DependentUpon>
     </Compile>
+    <Compile Include="Categoria.cs" />
     <Compile Include="Conexion.cs" />
     <Compile Include="C_consultas.cs" />
     <Compile Include="C_usuarios.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Problema.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="W_login.cs">
@@ -70,6 +72,9 @@
     <Compile Include="W_login.Designer.cs">
       <DependentUpon>W_login.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Agregar Problema.resx">
+      <DependentUpon>Agregar Problema.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

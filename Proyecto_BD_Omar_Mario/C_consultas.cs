@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,7 +35,25 @@ namespace Proyecto_BD_Omar_Mario
             {
                 MessageBox.Show("SIMON YA ENTRASTE");
             }
+        }
+        public int getCategory(String nombre)
+        {
+            Conexion con1 = new Conexion(server, puerto);
+            MySqlCommand comando = new MySqlCommand();
+            comando.Connection = con1.conexion;
+            con1.conexion.Open();
+            string query = "SELECT ID_CATEGORIA FROM CATEGORIA WHERE NOMBRE LIKE '@nombre'";
+          
+            // SqlDataAdapter da = new SqlDataAdapter(cadena, conexion);
+            MySqlDataAdapter da = new MySqlDataAdapter(query, con1.conexion);
+            DataSet ds = new DataSet();
+            da.Fill(ds, "categoria");
 
+
+    
+
+            // REGRESA LA LISTA
+            return lstProductos;
         }
     }
 }
