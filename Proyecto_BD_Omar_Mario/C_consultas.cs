@@ -51,23 +51,13 @@ namespace Proyecto_BD_Omar_Mario
         }
         public int getCategory(String nombre)
         {
-            Conexion con1 = new Conexion();
-            MySqlCommand comando = new MySqlCommand();
-            comando.Connection = con1.conexion;
-            con1.conexion.Open();
-            string query = "SELECT ID_CATEGORIA FROM CATEGORIA WHERE NOMBRE LIKE '@nombre'";
-          
-            // SqlDataAdapter da = new SqlDataAdapter(cadena, conexion);
-            MySqlDataAdapter da = new MySqlDataAdapter(query, con1.conexion);
-            DataSet ds = new DataSet();
-            da.Fill(ds, "categoria");
-
-
-
-
-            // REGRESA LA LISTA
-            // return lstProductos;
-            return 0;
+            MySqlCommand query = new MySqlCommand("SELECT ID_CATEGORIA FROM " +
+                "CATEGORIA WHERE NOMBRE LIKE '@nombre'");
+            query.Parameters.AddWithValue("@nombre", nombre);
+            DataTable dato = Conexion.ejecutarConsulta(query);
+            if(dato.Rows.Count == 0) { return -1; }
+            return Convert.ToInt32(dato.Rows[0][0].ToString());
+            
         }
     }
 }
