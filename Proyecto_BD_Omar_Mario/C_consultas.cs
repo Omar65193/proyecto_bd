@@ -10,7 +10,7 @@ namespace Proyecto_BD_Omar_Mario
 {
     class C_consultas
     {
-        public void iniciar_sesion(C_usuarios user)
+        public bool iniciar_sesion(C_usuarios user)
         {
             Conexion con1 = new Conexion();
             try
@@ -30,11 +30,11 @@ namespace Proyecto_BD_Omar_Mario
                 int confirmacion = Convert.ToInt32(comando.ExecuteScalar());
                 if (confirmacion == 0)
                 {
-                    Console.WriteLine("ERROR");
+                    return false;
                 }
                 else
                 {
-                    MessageBox.Show("YA ENTRASTE PERO ESTE LOGIN AUN NO ABRE NADA. PON ALGO AQUI");
+                    return true;
                 }
             }
             catch (Exception)
@@ -45,8 +45,10 @@ namespace Proyecto_BD_Omar_Mario
             finally
             {
                 con1.conexion.Close();
-                con1.conexion.Dispose();
+                con1.conexion.Dispose();                
             }
+
+            return false;
           
         }
         public int getCategory(String nombre)
@@ -58,6 +60,14 @@ namespace Proyecto_BD_Omar_Mario
             if(dato.Rows.Count == 0) { return -1; }
             return Convert.ToInt32(dato.Rows[0][0].ToString());
             
+        }
+        public DataTable llenar_categorias()
+        {
+            string consulta = "SELECT ID_CATEGORIA, NOMBRE FROM CATEGORIA";
+            MySqlCommand cmd = new MySqlCommand(consulta);
+            
+            var tabla = Conexion.ejecutarConsulta(cmd);
+            return tabla;
         }
     }
 }
