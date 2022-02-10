@@ -20,10 +20,16 @@ namespace Proyecto_BD_Omar_Mario
         private void button1_Click(object sender, EventArgs e)
         {
             C_usuarios user = new C_usuarios();
-            user.usuario = txt_user.Text;
-            user.contrasenia = txt_password.Text.ToString();
+            user.usuario = txt_user.Text.Trim();
+            user.contrasenia = txt_password.Text.ToString().Trim();
             C_consultas c_Consultas = new C_consultas();
-            c_Consultas.iniciar_sesion(user);
+
+            if (c_Consultas.iniciar_sesion(user))
+            {
+                Agregar_Problema w_problemas = new Agregar_Problema();
+                w_problemas.Show();
+                this.Hide();
+            }
 
         }
     }

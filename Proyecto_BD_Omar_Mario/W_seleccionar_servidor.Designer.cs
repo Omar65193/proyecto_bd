@@ -42,7 +42,7 @@ namespace Proyecto_BD_Omar_Mario
             this.txt_server.Name = "txt_server";
             this.txt_server.Size = new System.Drawing.Size(258, 20);
             this.txt_server.TabIndex = 0;
-            this.txt_server.Text = "tcp.ngrok.io";
+            this.txt_server.Text = ".tcp.ngrok.io";
             // 
             // txt_puerto
             // 
