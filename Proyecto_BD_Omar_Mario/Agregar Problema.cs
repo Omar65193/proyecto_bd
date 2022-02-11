@@ -44,7 +44,7 @@ namespace Proyecto_BD_Omar_Mario
             p.gestor = cboGestor.SelectedItem.ToString();
             p.visibilidad = rbPrivado.Checked ? "Privado" : "Publico";
             p.puntaje = Convert.ToDouble(nm_puntaje.Value);
-            if (validar())
+            if (validar(p.id, p.nombre, p.idcat, p.dificultad, p.bd, p.fecha, p.fuente, p.gestor, p.visibilidad, p.puntaje))
             {
                 //Insertar problema en la tabla
             }
@@ -61,8 +61,9 @@ namespace Proyecto_BD_Omar_Mario
             //return id;
             return 0;
         }
-        public bool validar()
+        public bool validar(int id, String nombre, int cat, String dificultad, String bd, String fecha, String fuente, String gestor, String visi, double puntaje)
         {
+
             return false;
         }
 
@@ -136,7 +137,8 @@ namespace Proyecto_BD_Omar_Mario
 
         private void Agregar_Problema_Load(object sender, EventArgs e)
         {
-
+            C_consultas consultas = new C_consultas();
+            txtID.Text = consultas.getID().ToString();
         }
     }
 }
