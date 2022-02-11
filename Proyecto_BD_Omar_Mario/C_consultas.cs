@@ -75,6 +75,7 @@ namespace Proyecto_BD_Omar_Mario
             string consulta = "SELECT MAX FROM ID_PROBLEMA";
             MySqlCommand cmd = new MySqlCommand(consulta);
             int id = Convert.ToInt32(Conexion.ejecutarSentencia(cmd).ToString());
+            //hola
             return id;
         }
     }
