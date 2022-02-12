@@ -38,7 +38,7 @@ namespace Proyecto_BD_Omar_Mario
             p.nombre = txtNombre.Text.ToString();
             p.descripcion = txt_desc.Text.ToString();
             p.solucion = txt_sol.Text.ToString();
-            p.puntaje = Convert.ToDouble(nm_puntaje.Value);
+            p.puntaje = Convert.ToDecimal(nm_puntaje.Value);
             p.idcat = getCategory();
             p.dificultad = cboDificultad.SelectedItem.ToString();
             p.gestor = cboGestor.SelectedItem.ToString();
@@ -46,9 +46,17 @@ namespace Proyecto_BD_Omar_Mario
             p.visibilidad = rbPrivado.Checked ? "Privado" : "Publico";
             p.fecha = dateTimePicker1.Value.ToString("yyyy/MM/dd");
             p.fuente = txtFuente.Text.ToString();
+            
             if (validar(p.nombre, p.descripcion, p.puntaje, p.dificultad, p.gestor, p.bd, p.visibilidad, p.fecha))
             {
-                MessageBox.Show(this, "Si funciona pero todavía no está terminado el metodo", "Datos no validos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                C_consultas c_consultas = new C_consultas();
+                if (c_consultas.insertar(p))
+                {
+                    MessageBox.Show(this, "Se agregó con éxito a la base de datos", "Completado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txtID.Text = c_consultas.getID().ToString();
+                }
+                
+                //MessageBox.Show(this, "Si funciona pero todavía no está terminado el metodo", "Datos no validos", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -59,11 +67,11 @@ namespace Proyecto_BD_Omar_Mario
         public int getCategory()
         {
             C_consultas consulta = new C_consultas();
-            //int id = consulta.getCategory(txtCategoria.Text.ToString());
-            //return id;
-            return 0;
+            int id = consulta.getCategory(cmb_categoria.Text.ToString());
+            return id;
+            
         }
-        public bool validar(String nombre, String desc, double puntaje, String dificultad, String gestor, String bd, String visi, String fecha)
+        public bool validar(String nombre, String desc, decimal puntaje, String dificultad, String gestor, String bd, String visi, String fecha)
         {
             if (String.IsNullOrEmpty(nombre))
             {
@@ -73,7 +81,7 @@ namespace Proyecto_BD_Omar_Mario
             {
                 return false;
             }
-            if (puntaje == 0.00)
+            if (puntaje == 0)
             {
                 return false;
             }
@@ -170,8 +178,8 @@ namespace Proyecto_BD_Omar_Mario
 
         private void Agregar_Problema_Load(object sender, EventArgs e)
         {
-            C_consultas consultas = new C_consultas();
-            txtID.Text = consultas.getID().ToString();
+            C_consultas c_consultas = new C_consultas();
+            txtID.Text = c_consultas.getID().ToString();
         }
     }
 }

@@ -54,7 +54,7 @@ namespace Proyecto_BD_Omar_Mario
         public int getCategory(String nombre)
         {
             MySqlCommand query = new MySqlCommand("SELECT ID_CATEGORIA FROM " +
-                "CATEGORIA WHERE NOMBRE LIKE '@nombre'");
+                "CATEGORIA WHERE NOMBRE LIKE @nombre");
             query.Parameters.AddWithValue("@nombre", nombre);
             DataTable dato = Conexion.ejecutarConsulta(query);
             if(dato.Rows.Count == 0) { return -1; }
@@ -72,12 +72,77 @@ namespace Proyecto_BD_Omar_Mario
 
         public int getID()
         {
-            string consulta = "SELECT MAX FROM ID_PROBLEMA";
-            MySqlCommand cmd = new MySqlCommand(consulta);
-            int id = Convert.ToInt32(Conexion.ejecutarSentencia(cmd).ToString());
-            //hola
-            return id;
+            Conexion con1 = new Conexion();
+            try
+            {
+
+                MySqlCommand comando = new MySqlCommand();
+                comando.Connection = con1.conexion;
+                con1.conexion.Open();
+                string consulta = "SELECT MAX(ID_PROBLEMA) FROM PROBLEMAS";
+                comando.CommandText = consulta;
+                int confirmacion = Convert.ToInt32(comando.ExecuteScalar());
+                return confirmacion + 1;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ha ocurrido un error");
+
+            }
+            finally
+            {
+                con1.conexion.Close();
+                con1.conexion.Dispose();
+            }
+            return 0;
         }
-        
+
+        public bool insertar(Problema problem)
+        {
+            Conexion con1 = new Conexion();
+            try
+            {
+
+                MySqlCommand comando = new MySqlCommand();
+                comando.Connection = con1.conexion;
+                con1.conexion.Open();
+
+                string consulta = @"INSERT INTO PROBLEMAS (ID_PROBLEMA, NOMBRE, DESCRIPCION, SOLUCION, ID_CATEGORIA, PUNTAJE, DIFICULTAD, GESTOR, BD, VISIBILIDAD, FECHA_CREACION, FUENTE) 
+                VALUES(@id, @nombre, @descripcion, @solucion, @idcat, @puntaje, @dificultad, @gestor, @bd, @visi, @fecha, @fuente)";
+
+
+                comando.CommandText = consulta;
+                comando.Parameters.AddWithValue("@id", problem.id);
+                comando.Parameters.AddWithValue("@nombre", problem.nombre);
+                comando.Parameters.AddWithValue("@descripcion", problem.descripcion);
+                comando.Parameters.AddWithValue("@solucion", problem.solucion);
+                comando.Parameters.AddWithValue("@idcat", problem.idcat);
+                comando.Parameters.AddWithValue("@puntaje", problem.puntaje);
+                comando.Parameters.AddWithValue("@dificultad", problem.dificultad);
+                comando.Parameters.AddWithValue("@gestor", problem.gestor);
+                comando.Parameters.AddWithValue("@bd", problem.bd);
+                comando.Parameters.AddWithValue("@visi", problem.visibilidad);
+                comando.Parameters.AddWithValue("@fecha", problem.fecha);
+                comando.Parameters.AddWithValue("@fuente", problem.fuente);
+                
+
+                comando.ExecuteNonQuery();
+                return true;
+            }
+            
+            catch (Exception)
+            {
+                MessageBox.Show("Ha ocurrido un error");
+
+            }
+            finally
+            {
+                con1.conexion.Close();
+                con1.conexion.Dispose();
+            }
+
+            return false;
+
+        }
     }
 }
