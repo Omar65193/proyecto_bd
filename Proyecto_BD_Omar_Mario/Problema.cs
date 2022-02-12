@@ -12,7 +12,7 @@ namespace Proyecto_BD_Omar_Mario
         private String NOMBRE;
         private String DESCRIPCION;
         private int IDCAT;
-        private double PUNTAJE;
+        private decimal PUNTAJE;
         private String DIFICULTAD;
         private String GESTOR;
         private String BD;
@@ -42,7 +42,7 @@ namespace Proyecto_BD_Omar_Mario
                 IDCAT = value;
             }
         }
-        public double puntaje
+        public decimal puntaje
         {
             get
             {
