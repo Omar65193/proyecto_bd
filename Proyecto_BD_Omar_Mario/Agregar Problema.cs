@@ -36,17 +36,19 @@ namespace Proyecto_BD_Omar_Mario
             Problema p = new Problema();
             p.id = Convert.ToInt32(txtID.Text.ToString());
             p.nombre = txtNombre.Text.ToString();
+            p.descripcion = txt_desc.Text.ToString();
+            p.solucion = txt_sol.Text.ToString();
+            p.puntaje = Convert.ToDouble(nm_puntaje.Value);
             p.idcat = getCategory();
             p.dificultad = cboDificultad.SelectedItem.ToString();
+            p.gestor = cboGestor.SelectedItem.ToString();
             p.bd = txtBD.Text.ToString();
+            p.visibilidad = rbPrivado.Checked ? "Privado" : "Publico";
             p.fecha = dateTimePicker1.Value.ToString("yyyy/MM/dd");
             p.fuente = txtFuente.Text.ToString();
-            p.gestor = cboGestor.SelectedItem.ToString();
-            p.visibilidad = rbPrivado.Checked ? "Privado" : "Publico";
-            p.puntaje = Convert.ToDouble(nm_puntaje.Value);
-            if (validar(p.id, p.nombre, p.idcat, p.dificultad, p.bd, p.fecha, p.fuente, p.gestor, p.visibilidad, p.puntaje))
+            if (validar(p.nombre, p.descripcion, p.puntaje, p.dificultad, p.gestor, p.bd, p.visibilidad, p.fecha))
             {
-                //Insertar problema en la tabla
+                MessageBox.Show(this, "Si funciona pero todavía no está terminado el metodo", "Datos no validos", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -61,10 +63,41 @@ namespace Proyecto_BD_Omar_Mario
             //return id;
             return 0;
         }
-        public bool validar(int id, String nombre, int cat, String dificultad, String bd, String fecha, String fuente, String gestor, String visi, double puntaje)
+        public bool validar(String nombre, String desc, double puntaje, String dificultad, String gestor, String bd, String visi, String fecha)
         {
-
-            return false;
+            if (String.IsNullOrEmpty(nombre))
+            {
+                return false;
+            }
+            if (String.IsNullOrEmpty(desc))
+            {
+                return false;
+            }
+            if (puntaje == 0.00)
+            {
+                return false;
+            }
+            if (String.IsNullOrEmpty(dificultad))
+            {
+                return false;
+            }
+            if (String.IsNullOrEmpty(gestor))
+            {
+                return false;
+            }
+            if (String.IsNullOrEmpty(bd))
+            {
+                return false;
+            }
+            if (String.IsNullOrEmpty(visi))
+            {
+                return false;
+            }
+            if (String.IsNullOrEmpty(fecha))
+            {
+                return false;
+            }
+            return true;
         }
 
         private void btnDesc_Click(object sender, EventArgs e)
