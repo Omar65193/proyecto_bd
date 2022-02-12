@@ -82,6 +82,7 @@ namespace Proyecto_BD_Omar_Mario
                 string consulta = "SELECT MAX(ID_PROBLEMA) FROM PROBLEMAS";
                 comando.CommandText = consulta;
                 int confirmacion = Convert.ToInt32(comando.ExecuteScalar());
+                //hola
                 return confirmacion + 1;
             }
             catch (Exception)
