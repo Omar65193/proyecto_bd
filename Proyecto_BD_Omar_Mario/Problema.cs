@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Proyecto_BD_Omar_Mario
 {
-    class Problema
+    public class Problema
     {
         private int ID;
         private String NOMBRE;

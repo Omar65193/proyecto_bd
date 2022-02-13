@@ -11,13 +11,13 @@ using System.Windows.Forms;
 
 namespace Proyecto_BD_Omar_Mario
 {
-    public partial class Agregar_Problema : Form
+    public partial class Actualizar_Problema : Form
     {
-        bool editado1 = false;
-        bool editado2 = false;
-        public Agregar_Problema()
+        public bool editado1;
+        public bool editado2;
+        public Actualizar_Problema(Problema p)
         {
-            InitializeComponent();            
+            InitializeComponent();
             C_consultas c_Consultas = new C_consultas();
             cmb_categoria.DataSource = c_Consultas.llenar_categorias();
             cmb_categoria.DisplayMember = "NOMBRE";
@@ -28,7 +28,21 @@ namespace Proyecto_BD_Omar_Mario
 
             cboDificultad.DataSource = dificultades;
             cboGestor.DataSource = gestores;
-
+            txtBD.Text = p.bd;
+            txtID.Text = p.id.ToString();
+            txtFuente.Text = p.fuente;
+            txtNombre.Text = p.nombre;
+            txt_desc.Text = p.descripcion;
+            txt_sol.Text = p.solucion;
+            cboDificultad.SelectedItem = p.dificultad;
+            cboGestor.SelectedItem = p.gestor;
+            nm_puntaje.Value = p.puntaje;
+            if (p.visibilidad.Equals("privado")) rbPrivado.Checked = true;
+            else rbPublico.Checked = true;
+        }
+        public Actualizar_Problema()
+        {
+            InitializeComponent();
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -46,7 +60,7 @@ namespace Proyecto_BD_Omar_Mario
             p.visibilidad = rbPrivado.Checked ? "Privado" : "Publico";
             p.fecha = dateTimePicker1.Value.ToString("yyyy/MM/dd");
             p.fuente = txtFuente.Text.ToString();
-            
+
             if (validar(p.nombre, p.descripcion, p.puntaje, p.dificultad, p.gestor, p.bd, p.visibilidad, p.fecha))
             {
                 C_consultas c_consultas = new C_consultas();
@@ -55,21 +69,85 @@ namespace Proyecto_BD_Omar_Mario
                     MessageBox.Show(this, "Se agregó con éxito a la base de datos", "Completado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txtID.Text = c_consultas.getID().ToString();
                 }
-                
+
                 //MessageBox.Show(this, "Si funciona pero todavía no está terminado el metodo", "Datos no validos", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
                 MessageBox.Show(this, "Los datos ingresados no son validos", "Datos no validos", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+        }
+
+        private void btnDesc_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog explorador = new OpenFileDialog();
+            explorador.Filter = "Text files (*.txt)|*.txt";
+            explorador.Title = "Abrir archivo";
+
+            if (explorador.ShowDialog() == DialogResult.OK)
+            {
+                editado1 = true;
+                lb_archivo.Text = explorador.FileName;
+                txt_desc.Text = "";
+                using (StreamReader lector = new StreamReader(explorador.FileName))
+                {
+                    while (!lector.EndOfStream)
+                    {
+                        txt_desc.Text += lector.ReadLine();
+                    }
+                }
+            }
+            editado1 = false;
+        }
+
+        private void btnSol_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog explorador = new OpenFileDialog();
+            explorador.Filter = "Text files (*.txt)|*.txt";
+            explorador.Title = "Abrir archivo";
+
+            if (explorador.ShowDialog() == DialogResult.OK)
+            {
+                editado2 = true;
+                lb_sol.Text = explorador.FileName;
+                txt_sol.Text = "";
+                using (StreamReader lector = new StreamReader(explorador.FileName))
+                {
+                    while (!lector.EndOfStream)
+                    {
+                        txt_sol.Text += lector.ReadLine();
+                    }
+                }
+            }
+            editado2 = false;
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void txt_desc_TextChanged(object sender, EventArgs e)
+        {
+            if (editado1 == false)
+            {
+                lb_archivo.Text = "ninguno";
+            }
+        }
+
+        private void txt_sol_TextChanged(object sender, EventArgs e)
+        {
+            if (editado2 == false)
+            {
+                lb_sol.Text = "ninguno";
+            }
         }
         public int getCategory()
         {
             C_consultas consulta = new C_consultas();
             int id = consulta.getCategory(cmb_categoria.Text.ToString());
             return id;
-            
+
         }
         public bool validar(String nombre, String desc, decimal puntaje, String dificultad, String gestor, String bd, String visi, String fecha)
         {
@@ -106,78 +184,6 @@ namespace Proyecto_BD_Omar_Mario
                 return false;
             }
             return true;
-        }
-
-        private void btnDesc_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog explorador = new OpenFileDialog();            
-            explorador.Filter = "Text files (*.txt)|*.txt";
-            explorador.Title = "Abrir archivo";
-
-            if(explorador.ShowDialog()== DialogResult.OK){
-                editado1 = true;
-                lb_archivo.Text = explorador.FileName;
-                txt_desc.Text = "";                
-                using (StreamReader lector = new StreamReader(explorador.FileName))
-                {
-                    while (!lector.EndOfStream)
-                    {
-                        txt_desc.Text += lector.ReadLine();
-                    }
-                }
-            }
-            editado1 = false;
-        }
-
-        private void txt_desc_TextChanged(object sender, EventArgs e)
-        {
-            if (editado1 == false)
-            {
-                lb_archivo.Text = "ninguno";
-            }
-            
-        }
-
-        private void btnSol_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog explorador = new OpenFileDialog();
-            explorador.Filter = "Text files (*.txt)|*.txt";
-            explorador.Title = "Abrir archivo";
-
-            if (explorador.ShowDialog() == DialogResult.OK)
-            {
-                editado2 = true;
-                lb_sol.Text = explorador.FileName;
-                txt_sol.Text = "";
-                using (StreamReader lector = new StreamReader(explorador.FileName))
-                {
-                    while (!lector.EndOfStream)
-                    {
-                        txt_sol.Text += lector.ReadLine();
-                    }
-                }
-            }
-            editado2 = false;
-        }
-
-        private void txt_sol_TextChanged(object sender, EventArgs e)
-        {
-            if (editado2 == false)
-            {
-                lb_sol.Text = "ninguno";
-            }
-
-        }
-
-        private void Agregar_Problema_Load(object sender, EventArgs e)
-        {
-            C_consultas c_consultas = new C_consultas();
-            txtID.Text = c_consultas.getID().ToString();
-        }
-
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
     }
 }
