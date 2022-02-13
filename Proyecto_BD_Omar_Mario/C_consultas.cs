@@ -143,7 +143,75 @@ namespace Proyecto_BD_Omar_Mario
             }
 
             return false;
+        }
+        public DataTable obtenerProblemas()
+        {
+            string consulta = "SELECT * from problemas";
+            MySqlCommand cmd = new MySqlCommand(consulta);
 
+            var tabla = Conexion.ejecutarConsulta(cmd);
+            return tabla;
+        }
+        public void eliminar(int id)
+        {
+            string sentencia = "DELETE FROM PROBLEMAS WHERE ID = @id";
+            MySqlCommand cmd = new MySqlCommand(sentencia);
+            cmd.Parameters.AddWithValue("@id", id);
+            Conexion.ejecutarSentencia(cmd);
+        }
+        public DataTable obtenerProblema(int id)
+        {
+            string consulta = "SELECT * FROM PROBLEMAS WHERE ID = @id";
+            MySqlCommand cmd = new MySqlCommand(consulta);
+            cmd.Parameters.AddWithValue("@id", id);
+            return Conexion.ejecutarConsulta(cmd);
+        }
+        public void modificar(Problema problem)
+        {
+            string sentencia = "UPDATE PROBLEMAS SET NOMBRE = @nombre where id = @id";
+            MySqlCommand cmd = new MySqlCommand(sentencia);
+            cmd.Parameters.AddWithValue("@id", problem.id);
+            cmd.Parameters.AddWithValue("@nombre", problem.nombre);
+            sentencia = "UPDATE PROBLEMAS SET DESCRIPCION = @descripcion where id = @id";
+            cmd = new MySqlCommand(sentencia);
+            cmd.Parameters.AddWithValue("@id", problem.id);
+            cmd.Parameters.AddWithValue("@descripcion", problem.descripcion);
+            sentencia = "UPDATE PROBLEMAS SET SOLUCION = @solucion where id = @id";
+            cmd = new MySqlCommand(sentencia);
+            cmd.Parameters.AddWithValue("@id", problem.id);
+            cmd.Parameters.AddWithValue("@solucion", problem.solucion);
+            sentencia = "UPDATE PROBLEMAS SET IDCAT = @idcat where id = @id";
+            cmd = new MySqlCommand(sentencia);
+            cmd.Parameters.AddWithValue("@id", problem.id);
+            cmd.Parameters.AddWithValue("@idcat", problem.idcat);
+            sentencia = "UPDATE PROBLEMAS SET PUNTAJE = @puntaje where id = @id";
+            cmd = new MySqlCommand(sentencia);
+            cmd.Parameters.AddWithValue("@id", problem.id);
+            cmd.Parameters.AddWithValue("@puntaje", problem.puntaje);
+            sentencia = "UPDATE PROBLEMAS SET DIFICULTAD = @dificultad where id = @id";
+            cmd = new MySqlCommand(sentencia);
+            cmd.Parameters.AddWithValue("@id", problem.id);
+            cmd.Parameters.AddWithValue("@dificultad", problem.dificultad);
+            sentencia = "UPDATE PROBLEMAS SET gestor = @gestor where id = @id";
+            cmd = new MySqlCommand(sentencia);
+            cmd.Parameters.AddWithValue("@id", problem.id);
+            cmd.Parameters.AddWithValue("@gestor", problem.gestor);
+            sentencia = "UPDATE PROBLEMAS SET BD = @bd where id = @id";
+            cmd = new MySqlCommand(sentencia);
+            cmd.Parameters.AddWithValue("@id", problem.id);
+            cmd.Parameters.AddWithValue("@bd", problem.bd);
+            sentencia = "UPDATE PROBLEMAS SET VISIBILIDAD = @visibilidad where id = @id";
+            cmd = new MySqlCommand(sentencia);
+            cmd.Parameters.AddWithValue("@id", problem.id);
+            cmd.Parameters.AddWithValue("@visi", problem.visibilidad);
+            sentencia = "UPDATE PROBLEMAS SET FECHA = @fecha where id = @id";
+            cmd = new MySqlCommand(sentencia);
+            cmd.Parameters.AddWithValue("@id", problem.id);
+            cmd.Parameters.AddWithValue("@fecha", problem.fecha);
+            sentencia = "UPDATE PROBLEMAS SET FUENTE = @fuente where id = @id";
+            cmd = new MySqlCommand(sentencia);
+            cmd.Parameters.AddWithValue("@id", problem.id);
+            cmd.Parameters.AddWithValue("@fuente", problem.fuente);
         }
     }
 }

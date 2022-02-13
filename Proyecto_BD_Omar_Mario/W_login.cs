@@ -26,7 +26,7 @@ namespace Proyecto_BD_Omar_Mario
 
             if (c_Consultas.iniciar_sesion(user))
             {
-                Agregar_Problema w_problemas = new Agregar_Problema();
+                Principal w_problemas = new Principal();
                 w_problemas.Show();
                 this.Hide();
             }
