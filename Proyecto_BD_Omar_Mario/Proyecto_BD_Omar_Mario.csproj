@@ -57,11 +57,17 @@
     <Compile Include="Conexion.cs" />
     <Compile Include="C_consultas.cs" />
     <Compile Include="C_usuarios.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="Actualizar Problema.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Actualizar Problema.Designer.cs">
+      <DependentUpon>Actualizar Problema.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Principal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Principal.Designer.cs">
+      <DependentUpon>Principal.cs</DependentUpon>
     </Compile>
     <Compile Include="Problema.cs" />
     <Compile Include="Program.cs" />
@@ -85,6 +91,12 @@
     </Compile>
     <EmbeddedResource Include="Agregar Problema.resx">
       <DependentUpon>Agregar Problema.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Actualizar Problema.resx">
+      <DependentUpon>Actualizar Problema.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Principal.resx">
+      <DependentUpon>Principal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
