@@ -334,7 +334,7 @@
             // 
             this.cmb_categoria.FormattingEnabled = true;
             this.cmb_categoria.Location = new System.Drawing.Point(557, 325);
-            this.cmb_categoria.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmb_categoria.Margin = new System.Windows.Forms.Padding(4);
             this.cmb_categoria.Name = "cmb_categoria";
             this.cmb_categoria.Size = new System.Drawing.Size(285, 24);
             this.cmb_categoria.TabIndex = 31;
@@ -348,7 +348,7 @@
             0,
             65536});
             this.nm_puntaje.Location = new System.Drawing.Point(1133, 448);
-            this.nm_puntaje.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nm_puntaje.Margin = new System.Windows.Forms.Padding(4);
             this.nm_puntaje.Name = "nm_puntaje";
             this.nm_puntaje.Size = new System.Drawing.Size(99, 22);
             this.nm_puntaje.TabIndex = 32;
@@ -356,7 +356,7 @@
             // txt_desc
             // 
             this.txt_desc.Location = new System.Drawing.Point(72, 565);
-            this.txt_desc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_desc.Margin = new System.Windows.Forms.Padding(4);
             this.txt_desc.Multiline = true;
             this.txt_desc.Name = "txt_desc";
             this.txt_desc.Size = new System.Drawing.Size(527, 158);
@@ -366,7 +366,7 @@
             // txt_sol
             // 
             this.txt_sol.Location = new System.Drawing.Point(680, 565);
-            this.txt_sol.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_sol.Margin = new System.Windows.Forms.Padding(4);
             this.txt_sol.Multiline = true;
             this.txt_sol.Name = "txt_sol";
             this.txt_sol.Size = new System.Drawing.Size(527, 158);
@@ -407,7 +407,7 @@
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Location = new System.Drawing.Point(3, 2);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(1247, 231);
             this.pictureBox1.TabIndex = 38;
@@ -461,7 +461,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtID);
             this.Controls.Add(this.label1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Agregar_Problema";
             this.Text = "Agregar_Problema";
