@@ -15,7 +15,8 @@ namespace Proyecto_BD_Omar_Mario
     {
         public bool editado1;
         public bool editado2;
-        public Actualizar_Problema(Problema p)
+        Principal PG;
+        public Actualizar_Problema(Problema p, Principal principal)
         {
             InitializeComponent();
             C_consultas c_Consultas = new C_consultas();
@@ -23,9 +24,9 @@ namespace Proyecto_BD_Omar_Mario
             cmb_categoria.DisplayMember = "NOMBRE";
             cmb_categoria.ValueMember = "ID_CATEGORIA";
 
-            String[] dificultades = { "BASICO", "NORMAL", "DIFICIL" };
-            String[] gestores = { "MYSQL", "POSTGRES", "MARIADB" };
-
+            String[] dificultades = { "BASICO", "NORMAL", "DIFICIL", "MUY DIFICIL" };
+            String[] gestores = { "MYSQL", "POSTGRESQL", "MARIADB" };
+            PG = principal;
             cboDificultad.DataSource = dificultades;
             cboGestor.DataSource = gestores;
             txtBD.Text = p.bd;
@@ -37,6 +38,7 @@ namespace Proyecto_BD_Omar_Mario
             cboDificultad.SelectedItem = p.dificultad;
             cboGestor.SelectedItem = p.gestor;
             nm_puntaje.Value = p.puntaje;
+            rbPublico.Checked = true;
             if (p.visibilidad.Equals("privado")) rbPrivado.Checked = true;
             else rbPublico.Checked = true;
         }
@@ -57,17 +59,18 @@ namespace Proyecto_BD_Omar_Mario
             p.dificultad = cboDificultad.SelectedItem.ToString();
             p.gestor = cboGestor.SelectedItem.ToString();
             p.bd = txtBD.Text.ToString();
-            p.visibilidad = rbPrivado.Checked ? "Privado" : "Publico";
+            p.visibilidad = rbPrivado.Checked ? "PRIVADO" : "PUBLICO";
             p.fecha = dateTimePicker1.Value.ToString("yyyy/MM/dd");
             p.fuente = txtFuente.Text.ToString();
 
             if (validar(p.nombre, p.descripcion, p.puntaje, p.dificultad, p.gestor, p.bd, p.visibilidad, p.fecha))
             {
                 C_consultas c_consultas = new C_consultas();
-                if (c_consultas.insertar(p))
+                if (c_consultas.modificar(p))
                 {
-                    MessageBox.Show(this, "Se agregó con éxito a la base de datos", "Completado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txtID.Text = c_consultas.getID().ToString();
+                    MessageBox.Show(this, "Se hizo la modificación al problema", "Completado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    PG.dgvProblemas.DataSource = c_consultas.obtenerProblemas();
+                    this.Close();
                 }
 
                 //MessageBox.Show(this, "Si funciona pero todavía no está terminado el metodo", "Datos no validos", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -184,6 +187,11 @@ namespace Proyecto_BD_Omar_Mario
                 return false;
             }
             return true;
+        }
+
+        private void Actualizar_Problema_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

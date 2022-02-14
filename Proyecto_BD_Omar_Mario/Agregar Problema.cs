@@ -15,17 +15,18 @@ namespace Proyecto_BD_Omar_Mario
     {
         bool editado1 = false;
         bool editado2 = false;
-        public Agregar_Problema()
+        Principal PG;
+        public Agregar_Problema(Principal principal)
         {
             InitializeComponent();            
             C_consultas c_Consultas = new C_consultas();
             cmb_categoria.DataSource = c_Consultas.llenar_categorias();
             cmb_categoria.DisplayMember = "NOMBRE";
             cmb_categoria.ValueMember = "ID_CATEGORIA";
-
-            String[] dificultades = { "BASICO", "NORMAL", "DIFICIL" };
-            String[] gestores = { "MYSQL", "POSTGRES", "MARIADB" };
-
+            PG = principal;
+            String[] dificultades = { "BASICO", "NORMAL", "DIFICIL", "MUY DIFICIL" };
+            String[] gestores = { "MYSQL", "POSTGRESQL", "MARIADB" };
+            rbPublico.Checked = true;
             cboDificultad.DataSource = dificultades;
             cboGestor.DataSource = gestores;
 
@@ -52,8 +53,11 @@ namespace Proyecto_BD_Omar_Mario
                 C_consultas c_consultas = new C_consultas();
                 if (c_consultas.insertar(p))
                 {
+                    PG.dgvProblemas.DataSource = c_consultas.obtenerProblemas();
                     MessageBox.Show(this, "Se agregó con éxito a la base de datos", "Completado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txtID.Text = c_consultas.getID().ToString();
+                    
+                    this.Close();
+
                 }
                 
                 //MessageBox.Show(this, "Si funciona pero todavía no está terminado el metodo", "Datos no validos", MessageBoxButtons.OK, MessageBoxIcon.Error);

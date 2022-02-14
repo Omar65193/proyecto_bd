@@ -41,11 +41,15 @@ namespace Proyecto_BD_Omar_Mario
             // 
             // dgvProblemas
             // 
+            this.dgvProblemas.AllowUserToAddRows = false;
+            this.dgvProblemas.AllowUserToDeleteRows = false;
             this.dgvProblemas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProblemas.Location = new System.Drawing.Point(12, 206);
             this.dgvProblemas.Name = "dgvProblemas";
+            this.dgvProblemas.ReadOnly = true;
             this.dgvProblemas.RowHeadersWidth = 51;
             this.dgvProblemas.RowTemplate.Height = 24;
+            this.dgvProblemas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProblemas.Size = new System.Drawing.Size(707, 246);
             this.dgvProblemas.TabIndex = 0;
             // 
@@ -100,6 +104,7 @@ namespace Proyecto_BD_Omar_Mario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(1011, 575);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnAdd);
@@ -108,6 +113,9 @@ namespace Proyecto_BD_Omar_Mario
             this.Controls.Add(this.dgvProblemas);
             this.Name = "Principal";
             this.Text = "Form1";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Principal_FormClosed);
+            this.Enter += new System.EventHandler(this.Principal_Enter);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProblemas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -115,12 +123,11 @@ namespace Proyecto_BD_Omar_Mario
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dgvProblemas;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnModificar;
+        public System.Windows.Forms.DataGridView dgvProblemas;
     }
 }
 
