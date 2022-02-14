@@ -426,6 +426,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(1231, 990);
             this.Controls.Add(this.lb_sol);
             this.Controls.Add(this.pictureBox1);
@@ -462,6 +463,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Actualizar_Problema";
             this.Text = "Modificar Problema";
+            this.Enter += new System.EventHandler(this.Actualizar_Problema_Enter);
             ((System.ComponentModel.ISupportInitialize)(this.nm_puntaje)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

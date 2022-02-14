@@ -81,13 +81,22 @@ namespace Proyecto_BD_Omar_Mario
                 con1.conexion.Open();
                 string consulta = "SELECT MAX(ID_PROBLEMA) FROM PROBLEMAS";
                 comando.CommandText = consulta;
-                int confirmacion = Convert.ToInt32(comando.ExecuteScalar());
+                int confirmacion;
+                try
+                {
+                    confirmacion = Convert.ToInt32(comando.ExecuteScalar());
+                }
+                catch (Exception ex)
+                {
+                    confirmacion = 0;
+                }
                 //hola
-                return confirmacion + 1;
+                confirmacion++;
+                return confirmacion;
             }
             catch (Exception)
             {
-                MessageBox.Show("Ha ocurrido un error");
+                MessageBox.Show("Ha ocurrido un error xd");
 
             }
             finally
@@ -107,7 +116,9 @@ namespace Proyecto_BD_Omar_Mario
                 MySqlCommand comando = new MySqlCommand();
                 comando.Connection = con1.conexion;
                 con1.conexion.Open();
-
+                string sentencia = "ALTER TABLE PROBLEMAS AUTO_INCREMENT = 1";
+                MySqlCommand comando2 = new MySqlCommand(sentencia);
+                Conexion.ejecutarSentencia(comando2);
                 string consulta = @"INSERT INTO PROBLEMAS (ID_PROBLEMA, NOMBRE, DESCRIPCION, SOLUCION, ID_CATEGORIA, PUNTAJE, DIFICULTAD, GESTOR, BD, VISIBILIDAD, FECHA_CREACION, FUENTE) 
                 VALUES(@id, @nombre, @descripcion, @solucion, @idcat, @puntaje, @dificultad, @gestor, @bd, @visi, @fecha, @fuente)";
 
@@ -146,7 +157,7 @@ namespace Proyecto_BD_Omar_Mario
         }
         public DataTable obtenerProblemas()
         {
-            string consulta = "SELECT * from problemas";
+            string consulta = "SELECT * FROM PROBLEMAS";
             MySqlCommand cmd = new MySqlCommand(consulta);
 
             var tabla = Conexion.ejecutarConsulta(cmd);
@@ -154,64 +165,83 @@ namespace Proyecto_BD_Omar_Mario
         }
         public void eliminar(int id)
         {
-            string sentencia = "DELETE FROM PROBLEMAS WHERE ID = @id";
+            string sentencia = "DELETE FROM PROBLEMAS WHERE ID_PROBLEMA = @id";
             MySqlCommand cmd = new MySqlCommand(sentencia);
             cmd.Parameters.AddWithValue("@id", id);
             Conexion.ejecutarSentencia(cmd);
         }
         public DataTable obtenerProblema(int id)
         {
-            string consulta = "SELECT * FROM PROBLEMAS WHERE ID = @id";
+            string consulta = "SELECT * FROM PROBLEMAS WHERE ID_PROBLEMA = @id";
             MySqlCommand cmd = new MySqlCommand(consulta);
             cmd.Parameters.AddWithValue("@id", id);
             return Conexion.ejecutarConsulta(cmd);
         }
-        public void modificar(Problema problem)
+        public bool modificar(Problema problem)
         {
-            string sentencia = "UPDATE PROBLEMAS SET NOMBRE = @nombre where id = @id";
-            MySqlCommand cmd = new MySqlCommand(sentencia);
-            cmd.Parameters.AddWithValue("@id", problem.id);
-            cmd.Parameters.AddWithValue("@nombre", problem.nombre);
-            sentencia = "UPDATE PROBLEMAS SET DESCRIPCION = @descripcion where id = @id";
-            cmd = new MySqlCommand(sentencia);
-            cmd.Parameters.AddWithValue("@id", problem.id);
-            cmd.Parameters.AddWithValue("@descripcion", problem.descripcion);
-            sentencia = "UPDATE PROBLEMAS SET SOLUCION = @solucion where id = @id";
-            cmd = new MySqlCommand(sentencia);
-            cmd.Parameters.AddWithValue("@id", problem.id);
-            cmd.Parameters.AddWithValue("@solucion", problem.solucion);
-            sentencia = "UPDATE PROBLEMAS SET IDCAT = @idcat where id = @id";
-            cmd = new MySqlCommand(sentencia);
-            cmd.Parameters.AddWithValue("@id", problem.id);
-            cmd.Parameters.AddWithValue("@idcat", problem.idcat);
-            sentencia = "UPDATE PROBLEMAS SET PUNTAJE = @puntaje where id = @id";
-            cmd = new MySqlCommand(sentencia);
-            cmd.Parameters.AddWithValue("@id", problem.id);
-            cmd.Parameters.AddWithValue("@puntaje", problem.puntaje);
-            sentencia = "UPDATE PROBLEMAS SET DIFICULTAD = @dificultad where id = @id";
-            cmd = new MySqlCommand(sentencia);
-            cmd.Parameters.AddWithValue("@id", problem.id);
-            cmd.Parameters.AddWithValue("@dificultad", problem.dificultad);
-            sentencia = "UPDATE PROBLEMAS SET gestor = @gestor where id = @id";
-            cmd = new MySqlCommand(sentencia);
-            cmd.Parameters.AddWithValue("@id", problem.id);
-            cmd.Parameters.AddWithValue("@gestor", problem.gestor);
-            sentencia = "UPDATE PROBLEMAS SET BD = @bd where id = @id";
-            cmd = new MySqlCommand(sentencia);
-            cmd.Parameters.AddWithValue("@id", problem.id);
-            cmd.Parameters.AddWithValue("@bd", problem.bd);
-            sentencia = "UPDATE PROBLEMAS SET VISIBILIDAD = @visibilidad where id = @id";
-            cmd = new MySqlCommand(sentencia);
-            cmd.Parameters.AddWithValue("@id", problem.id);
-            cmd.Parameters.AddWithValue("@visi", problem.visibilidad);
-            sentencia = "UPDATE PROBLEMAS SET FECHA = @fecha where id = @id";
-            cmd = new MySqlCommand(sentencia);
-            cmd.Parameters.AddWithValue("@id", problem.id);
-            cmd.Parameters.AddWithValue("@fecha", problem.fecha);
-            sentencia = "UPDATE PROBLEMAS SET FUENTE = @fuente where id = @id";
-            cmd = new MySqlCommand(sentencia);
-            cmd.Parameters.AddWithValue("@id", problem.id);
-            cmd.Parameters.AddWithValue("@fuente", problem.fuente);
+            try
+            {
+                string sentencia = "UPDATE PROBLEMAS SET NOMBRE = @nombre WHERE ID_PROBLEMA = @id";
+                MySqlCommand cmd = new MySqlCommand(sentencia);
+                cmd.Parameters.AddWithValue("@id", problem.id);
+                cmd.Parameters.AddWithValue("@nombre", problem.nombre);
+                Conexion.ejecutarSentencia(cmd);
+                sentencia = "UPDATE PROBLEMAS SET DESCRIPCION = @descripcion WHERE ID_PROBLEMA = @id";
+                cmd = new MySqlCommand(sentencia);
+                cmd.Parameters.AddWithValue("@id", problem.id);
+                cmd.Parameters.AddWithValue("@descripcion", problem.descripcion);
+                Conexion.ejecutarSentencia(cmd);
+                sentencia = "UPDATE PROBLEMAS SET SOLUCION = @solucion WHERE ID_PROBLEMA = @id";
+                cmd = new MySqlCommand(sentencia);
+                cmd.Parameters.AddWithValue("@id", problem.id);
+                cmd.Parameters.AddWithValue("@solucion", problem.solucion);
+                Conexion.ejecutarSentencia(cmd);
+                sentencia = "UPDATE PROBLEMAS SET IDCAT = @idcat WHERE ID_PROBLEMA = @id";
+                cmd = new MySqlCommand(sentencia);
+                cmd.Parameters.AddWithValue("@id", problem.id);
+                cmd.Parameters.AddWithValue("@idcat", problem.idcat);
+                Conexion.ejecutarSentencia(cmd);
+                sentencia = "UPDATE PROBLEMAS SET PUNTAJE = @puntaje WHERE ID_PROBLEMA = @id";
+                cmd = new MySqlCommand(sentencia);
+                cmd.Parameters.AddWithValue("@id", problem.id);
+                cmd.Parameters.AddWithValue("@puntaje", problem.puntaje);
+                Conexion.ejecutarSentencia(cmd);
+                sentencia = "UPDATE PROBLEMAS SET DIFICULTAD = @dificultad WHERE ID_PROBLEMA = @id";
+                cmd = new MySqlCommand(sentencia);
+                cmd.Parameters.AddWithValue("@id", problem.id);
+                cmd.Parameters.AddWithValue("@dificultad", problem.dificultad);
+                Conexion.ejecutarSentencia(cmd);
+                sentencia = "UPDATE PROBLEMAS SET gestor = @gestor WHERE ID_PROBLEMA = @id";
+                cmd = new MySqlCommand(sentencia);
+                cmd.Parameters.AddWithValue("@id", problem.id);
+                cmd.Parameters.AddWithValue("@gestor", problem.gestor);
+                Conexion.ejecutarSentencia(cmd);
+                sentencia = "UPDATE PROBLEMAS SET BD = @bd WHERE ID_PROBLEMA = @id";
+                cmd = new MySqlCommand(sentencia);
+                cmd.Parameters.AddWithValue("@id", problem.id);
+                cmd.Parameters.AddWithValue("@bd", problem.bd);
+                Conexion.ejecutarSentencia(cmd);
+                sentencia = "UPDATE PROBLEMAS SET VISIBILIDAD = @visibilidad WHERE ID_PROBLEMA = @id";
+                cmd = new MySqlCommand(sentencia);
+                cmd.Parameters.AddWithValue("@id", problem.id);
+                cmd.Parameters.AddWithValue("@visi", problem.visibilidad);
+                Conexion.ejecutarSentencia(cmd);
+                sentencia = "UPDATE PROBLEMAS SET FECHA = @fecha WHERE ID_PROBLEMA = @id";
+                cmd = new MySqlCommand(sentencia);
+                cmd.Parameters.AddWithValue("@id", problem.id);
+                cmd.Parameters.AddWithValue("@fecha", problem.fecha);
+                Conexion.ejecutarSentencia(cmd);
+                sentencia = "UPDATE PROBLEMAS SET FUENTE = @fuente WHERE ID_PROBLEMA = @id";
+                cmd = new MySqlCommand(sentencia);
+                cmd.Parameters.AddWithValue("@id", problem.id);
+                cmd.Parameters.AddWithValue("@fuente", problem.fuente);
+                Conexion.ejecutarSentencia(cmd);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
     }
 }
