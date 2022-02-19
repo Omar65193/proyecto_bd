@@ -76,3 +76,5 @@ C:\Users\pergu\proyecto_bd\Proyecto_BD_Omar_Mario\obj\Debug\Proyecto_BD_Omar_Mar
 C:\Users\pergu\proyecto_bd\Proyecto_BD_Omar_Mario\obj\Debug\Proyecto_BD_Omar_Mario.pdb
 C:\Users\luism\Downloads\proyecto_bd\Proyecto_BD_Omar_Mario\obj\Debug\Proyecto_BD_Omar_Mario.Actualizar_Problema.resources
 C:\Users\luism\Downloads\proyecto_bd\Proyecto_BD_Omar_Mario\obj\Debug\Proyecto_BD_Omar_Mario.Principal.resources
+C:\Users\pergu\proyecto_bd\Proyecto_BD_Omar_Mario\obj\Debug\Proyecto_BD_Omar_Mario.Actualizar_Problema.resources
+C:\Users\pergu\proyecto_bd\Proyecto_BD_Omar_Mario\obj\Debug\Proyecto_BD_Omar_Mario.Principal.resources
