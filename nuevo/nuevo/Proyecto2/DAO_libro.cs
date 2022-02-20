@@ -17,11 +17,10 @@ namespace Proyecto2
                 SqlCommand comando = new SqlCommand();
                 comando.Connection = con1.conexion;
                 con1.conexion.Open();
-                string consulta = @"insert into LIBRO(ID, ISBN, NO_EDICION, ANIO_PUBLICACION, NOMBRE_AUTORES, PAIS, SINOPSIS, CARRERA, MATERIA) " +
-                    "VALUES(@id, @isbn, @edicion, @anio, @autores, @pais, @sinopsis, @carrera, @materia); ";
+                string consulta = @"insert into LIBRO(ISBN, NO_EDICION, ANIO_PUBLICACION, NOMBRES_AUTORES, PAIS, SINOPSIS, CARRERA, MATERIA) " +
+                    "VALUES(@isbn, @edicion, @anio, @autores, @pais, @sinopsis, @carrera, @materia); ";
 
-                comando.CommandText = consulta;
-                comando.Parameters.AddWithValue("@id", libro.id);
+                comando.CommandText = consulta;                
                 comando.Parameters.AddWithValue("@isbn", libro.isbn);
                 comando.Parameters.AddWithValue("@edicion", libro.edicion);
                 comando.Parameters.AddWithValue("@anio", libro.anio);

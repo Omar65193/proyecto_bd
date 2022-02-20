@@ -45,6 +45,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -114,7 +115,6 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="Inicio.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -173,6 +173,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Conexion.cs" />
     <Compile Include="DAO_libro.cs" />
+    <Compile Include="DAO_usuario.cs" />
     <Compile Include="Libro.cs" />
     <Compile Include="AgregarLibro.aspx.cs">
       <DependentUpon>AgregarLibro.aspx</DependentUpon>
@@ -195,13 +196,6 @@
     <Compile Include="MostrarLibros.aspx.designer.cs">
       <DependentUpon>MostrarLibros.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Inicio.aspx.cs">
-      <DependentUpon>Inicio.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Inicio.aspx.designer.cs">
-      <DependentUpon>Inicio.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -213,6 +207,7 @@
     <Compile Include="Registro.aspx.designer.cs">
       <DependentUpon>Registro.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Usuario.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

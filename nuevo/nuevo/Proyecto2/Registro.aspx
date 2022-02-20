@@ -18,28 +18,9 @@
       			<span class="navbar-toggler-icon"></span>
     		</button>
     		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-      			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        			<li class="nav-item">
-          				<a class="nav-link active" aria-current="page" href="Inicio.aspx">Inicio</a>
-        			</li>
-      					<li class="nav-item dropdown">
-          				<a class="nav-link dropdown-toggle" href="#" id="navbarServicio" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            			Libros
-          				</a>
-          				<ul class="dropdown-menu" aria-labelledby="navbarServicio">
-            				<li><a class="dropdown-item" href="MostrarLibros.aspx">Mostrar Libros</a></li>
-            				<li><a class="dropdown-item" href="AgregarLibro.aspx">Agregar Libro</a></li>
-
-          				</ul>
-      				    </li>
-      				<li>
-      					<a class="nav-link active" aria-current="page" href="Acerca.aspx">Acerca de</a>
-      				</li>
-      			</ul>
                 <ul>
                    <li class ="log">
-      					<a class="nav-link active" aria-current="page" href="Login.aspx">Entrar/Registrarse</a>
-      				</li>
+      					&nbsp;</li>
               </ul>
     		</div>
   		</div>

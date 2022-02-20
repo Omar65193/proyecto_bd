@@ -16,6 +16,31 @@ namespace Proyecto2
 
         protected void btnRegistrar_Click(object sender, EventArgs e)
         {
+            Usuario usuario = new Usuario();
+            DAO_usuario dAO_Usuario = new DAO_usuario();
+
+            usuario.Nombre = txtUser.Text;
+            if(txtPass.Text == txtPass2.Text)
+            {
+                usuario.Contrasenia = txtPass.Text;
+                if (dAO_Usuario.registrarse(usuario))
+                {
+                    Response.Redirect("Login.aspx");
+                }
+                else
+                {
+                    string script = "alert('Ha ocurrido un error intentalo otra vez');";
+
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, true);
+                }
+            }
+            else {
+                string script = "alert('Las contraseñas no son iguales');";
+
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, true);
+            }
+            
+            
 
         }
     }

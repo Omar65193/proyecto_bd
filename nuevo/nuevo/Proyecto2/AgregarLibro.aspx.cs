@@ -23,11 +23,14 @@ namespace Proyecto2
             DAOLibros dAOLibros = new DAOLibros();
             if (dAOLibros.insertar(libro))
             {
-                //Mensaje de success
+                Response.Redirect("MostrarLibros.aspx");
+                
             }
             else
             {
-                //Mensaje de Fail
+                string script = "alert('Fallo la insecion del libro');";
+
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, true);
             }
         }
     }

@@ -13,33 +13,13 @@
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
   		<div class="container">
-    		<a class="navbar-brand" href="Inicio.aspx">PUTOS</a>
+    		BIBLIOTECA - LIBROS
     		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      			<span class="navbar-toggler-icon"></span>
     		</button>
     		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-      			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        			<li class="nav-item">
-          				<a class="nav-link active" aria-current="page" href="Inicio.aspx">Inicio</a>
-        			</li>
-      					<li class="nav-item dropdown">
-          				<a class="nav-link dropdown-toggle" href="#" id="navbarServicio" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            			Libros
-          				</a>
-          				<ul class="dropdown-menu" aria-labelledby="navbarServicio">
-            				<li><a class="dropdown-item" href="MostrarLibros.aspx">Mostrar Libros</a></li>
-            				<li><a class="dropdown-item" href="AgregarLibro.aspx">Agregar Libro</a></li>
-
-          				</ul>
-      				    </li>
-      				<li>
-      					<a class="nav-link active" aria-current="page" href="Acerca.aspx">Acerca de</a>
-      				</li>
-      			</ul>
                 <ul>
                    <li class ="log">
-      					<a class="nav-link active" aria-current="page" href="Login.aspx">Entrar/Registrarse</a>
-      				</li>
+      					&nbsp;</li>
               </ul>
     		</div>
   		</div>
@@ -52,15 +32,62 @@
             <div class="auto-style1">
                 <center>
                     <div class="auto-style1">
-                        Libros en Existencia<br />
+                Libros eLibros en Existencia<br />
                         <br />
                     </div>
                     <div class="auto-style1">
                         <br />
+                        <asp:Panel ID="Panel1" runat="server">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <asp:Button ID="add_libro" runat="server" Text="Agregar" BackColor="#66FF33" BorderStyle="Outset" Height="56px" OnClick="add_libro_Click" Width="178px" />
+                        </asp:Panel>
+                        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager> 
                         <asp:Button ID="btnMostrar" runat="server" Height="55px" OnClick="btnMostrar_Click" Text="Mostrar" Width="186px" BackColor="Blue" BorderColor="Blue" />
-                        <asp:GridView ID="gvLibros" runat="server">
+                        <asp:UpdatePanel ID="UpdatePanel1" UpdateMode="Conditional" runat="server">
+                            <ContentTemplate>
+                        <asp:GridView ID="gvLibros" runat="server" AutoGenerateColumns="false" Width="1414px">
+                            <Columns>
+                                <asp:BoundField HeaderText="ID" DataField="ID" >
+                                <HeaderStyle Font-Size="12pt" Width="100px" />
+                                <ItemStyle Font-Size="10pt" />
+                                </asp:BoundField>
+                                <asp:BoundField HeaderText="ISBN" DataField="ISBN" >
+                                    <HeaderStyle Font-Size="12pt" Width="100px" />
+                                <ItemStyle Font-Size="10pt" />
+                                </asp:BoundField>
+                                <asp:BoundField HeaderText="NO_EDICION" DataField="NO_EDICION" >
+                                    <HeaderStyle Font-Size="12pt" Width="150px" />
+                                <ItemStyle Font-Size="10pt" />
+                                </asp:BoundField>
+                                <asp:BoundField HeaderText="ANIO_PUBLICACION" DataField="ANIO_PUBLICACION" >
+                                    <HeaderStyle Font-Size="12pt" Width="200px" />
+                                <ItemStyle Font-Size="10pt" />
+                                </asp:BoundField>
+                                <asp:BoundField HeaderText="NOMBRES_AUTORES" DataField="NOMBRES_AUTORES" >
+                                    <HeaderStyle Font-Size="12pt" Width="100px" />
+                                <ItemStyle Font-Size="10pt" />
+                                </asp:BoundField>
+                                <asp:BoundField HeaderText="PAIS" DataField="PAIS" >
+                                    <HeaderStyle Font-Size="12pt" Width="100px" />
+                                <ItemStyle Font-Size="10pt" />
+                                </asp:BoundField>
+                                <asp:BoundField HeaderText="SINOPSIS" DataField="SINOPSIS" >
+                                    <HeaderStyle Font-Size="12pt" Width="300px" />
+                                <ItemStyle Font-Size="10pt" />
+                                </asp:BoundField>
+                                <asp:BoundField HeaderText="CARRERA" DataField="CARRERA" >
+                                    <HeaderStyle Font-Size="12pt" Width="100px" />
+                                <ItemStyle Font-Size="10pt" />
+                                </asp:BoundField>
+                                <asp:BoundField HeaderText="MATERIA" DataField="MATERIA" >
+                                    <HeaderStyle Font-Size="12pt" Width="100px" />
+                                <ItemStyle Font-Size="10pt" />
+                                </asp:BoundField>
+
+                            </Columns>
                         </asp:GridView>
-                        <br />
+                              </ContentTemplate>
+                            </asp:UpdatePanel>
                         <br />
                         <br />
                     </div>
@@ -73,7 +100,7 @@
     <br />
     <br />
     <footer>
-        <p>&copy; <%: DateTime.Now.Year %> - Libreria</p>
+        <p>&copy; >&copy; <%: DateTime.Now.Year %>- Libreria</p>
     </footer>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
