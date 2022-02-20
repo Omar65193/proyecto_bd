@@ -1,0 +1,245 @@
+﻿* {
+    font-family: Arial;
+    font-size: 18px;
+    padding: 0;
+    margin-right: 25px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+html{
+    min-height: 100%;
+    position: relative;
+}
+body{
+    margin: 0;
+    text-align : center;
+    margin-bottom: 40px;
+}
+.container{
+    margin: 25px 25px, 25px, 25px;
+}
+li{
+    list-style: none;
+    color: #ffffff;
+}
+.nav-link{
+    text-align:left;
+    color: #000000;
+}
+a{
+    color: #7e6f6f;
+}
+.log{
+    text-align : right;
+    font-size: 10px;
+}
+.nav-link active:hover{
+    color: red;
+}
+.log-form{
+    position: relative;
+    padding-top: 10px;
+    width: 400px;
+    height: 400px;
+    margin-top:140px;
+    box-shadow: 7px 13px 37px #808080;
+    margin-bottom: 300px;
+    background: #7e6f6f;
+    border-top: 4px solid #000000;
+    color: #000000;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+    color: snow;
+    font-weight: bold;
+}
+.Add-form {
+    position: relative;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 80%;
+    height: 60%;
+    margin-top: 140px;
+    margin-bottom: 120px;
+    box-shadow: 7px 13px 37px #808080;
+    margin-bottom: 300px;
+    background: #7e6f6f;
+    border-top: 4px solid #000000;
+    color: #000000;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+    color: snow;
+    font-weight: bold;
+}
+#reg{
+    height: 470px;
+}
+h2{
+    margin: 0px;
+    text-align:center;
+    height: 40px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid;
+    font-size: 20px;
+    font-weight: bold;
+
+}
+    .log-form p a {
+        width: 100%;
+        margin: 0px;
+        text-align: center;
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
+    }
+.log-form a:hover{
+    text-decoration: underline;
+}
+#txtISBM {
+    width: 80%;
+    border: 1px solid #0011bb;
+    margin-bottom: 15px;
+    padding: 11px 10px;
+    background: #252323;
+    color: snow;
+    font-size: 14px;
+    font-weight: bold;
+}
+#txtEdicion {
+    width: 80%;
+    border: 1px solid #0011bb;
+    margin-bottom: 15px;
+    padding: 11px 10px;
+    background: #252323;
+    color: snow;
+    font-size: 14px;
+    font-weight: bold;
+}
+#txtAnio {
+    width: 80%;
+    border: 1px solid #0011bb;
+    margin-bottom: 15px;
+    padding: 11px 10px;
+    background: #252323;
+    color: snow;
+    font-size: 14px;
+    font-weight: bold;
+}
+#txtAutores {
+    width: 80%;
+    border: 1px solid #0011bb;
+    margin-bottom: 15px;
+    padding: 11px 10px;
+    background: #252323;
+    color: snow;
+    font-size: 14px;
+    font-weight: bold;
+}
+#txtPais {
+    width: 80%;
+    border: 1px solid #0011bb;
+    margin-bottom: 15px;
+    padding: 11px 10px;
+    background: #252323;
+    color: snow;
+    font-size: 14px;
+    font-weight: bold;
+}
+#txtSinopsis {
+    width: 80%;
+    border: 1px solid #0011bb;
+    margin-bottom: 15px;
+    padding: 11px 10px;
+    background: #252323;
+    color: snow;
+    font-size: 14px;
+    font-weight: bold;
+}
+#txtCarrera {
+    width: 80%;
+    border: 1px solid #0011bb;
+    margin-bottom: 15px;
+    padding: 11px 10px;
+    background: #252323;
+    color: snow;
+    font-size: 14px;
+    font-weight: bold;
+}
+#txtMateria {
+    width: 80%;
+    border: 1px solid #0011bb;
+    margin-bottom: 15px;
+    padding: 11px 10px;
+    background: #252323;
+    color: snow;
+    font-size: 14px;
+    font-weight: bold;
+}
+#txtUser{
+    width: 80%;
+    border: 1px solid #0011bb;
+    margin-bottom: 15px;
+    padding: 11px 10px;
+    background: #252323;
+    color: snow;
+    font-size: 14px;
+    font-weight: bold;
+}
+#txtPass {
+    width: 80%;
+    border: 1px solid #0011bb;
+    margin-bottom: 15px;
+    padding: 11px 10px;
+    background: #252323;
+    color: snow;
+    font-size: 14px;
+    font-weight: bold;
+}
+#txtPass2 {
+    width: 80%;
+    border: 1px solid #0011bb;
+    margin-bottom: 15px;
+    padding: 11px 10px;
+    background: #252323;
+    color: snow;
+    font-size: 14px;
+    font-weight: bold;
+}
+#btnEntrar{
+    width: 80%;
+    height: 40px;
+    background: #00a4ff;
+    border: none;
+    color: white;
+    margin-bottom: 16px;
+    font-weight: bold;
+}
+#btnRegistrar {
+    width: 80%;
+    height: 40px;
+    background: #00a4ff;
+    border: none;
+    color: white;
+    margin-bottom: 16px;
+    font-weight: bold;
+}
+#btnAgregar {
+    width: 20%;
+    margin-right: 10px;
+    height: 40px;
+    background: #00a4ff;
+    border: none;
+    color: white;
+    margin-bottom: 16px;
+    font-weight: bold;
+}
+footer{
+    background-color: black;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    color: snow;
+}
